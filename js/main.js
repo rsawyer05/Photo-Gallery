@@ -21,7 +21,6 @@ $("body").append($overlay);
 $("#imageGallery a").click(function(event){
   event.preventDefault();
   var imageLocation = $(this).attr("href");
-  $(this).addClass("selected");
   //Show image on overlay
   $image.attr("src", imageLocation);
   //Show the overlay
@@ -38,10 +37,5 @@ $("#imageGallery a").click(function(event){
 $btnExit.click(function(){
   //Hide the overlay
   $overlay.hide();
-  $("a").removeClass("selected");
 
 });
-
-$btnPrev.click(function() {
-
- });
