@@ -147,7 +147,7 @@ img {
   font-size: 3em;
   position: fixed;
   display: inline-block;
-  top: 30%;
+  top: 25%;
   cursor: pointer;
   padding: 10px 20px;
 }
@@ -189,7 +189,7 @@ img {
 
   #btnPrev,
   #btnNext {
-    top: 35%;
+    top: 25%;
   }
 
 
@@ -209,7 +209,7 @@ img {
 
   #btnPrev,
   #btnNext {
-    top: 40%;
+    top: 30%;
   }
 
 }
