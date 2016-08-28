@@ -18,11 +18,15 @@ $overlay.append($btnExit);
 $("body").append($overlay);
 
 //Prevent Default and capture image to show
-$("#imageGallery a").click(function(event){
+$("#imageGallery div.image-wrapper").on("click", function(event){
   event.preventDefault();
-  var imageLocation = $(this).attr("href");
+  var imageLocation = $(this).find("a").attr("href");
   //Show image on overlay
   $image.attr("src", imageLocation);
+  //Remove class active from previous active item
+  $("#imageGallery div.active").removeClass("active");
+  //Adds active class to active image
+  $(this).addClass("active");
   //Show the overlay
   $overlay.show();
   //Finding caption for clicked image
@@ -31,11 +35,47 @@ $("#imageGallery a").click(function(event){
   $caption.text($captionLocation);
 
 
+
 });
 
-//When overlay is clicked
-$btnExit.click(function(){
+//When x is clicked
+$btnExit.on("click", function(){
   //Hide the overlay
   $overlay.hide();
+  //Remove class "active"
+  $("#imageGallery a.active").removeClass("active");
 
 });
+
+
+$("#overlay").on("keydown", function(event){
+
+    //Left
+  if(event.which == "37") {
+      navigate(-1);
+      console.log(event.which);
+    //Right
+  } else if(event.which == "39") {
+      navigate(1);
+      console.log(event.which);
+  }
+
+});
+
+//Click based navigation
+$btnPrev.on("click", function(){
+  navigate(-1);
+});
+
+$btnNext.on("click", function(){
+  navigate(1);
+});
+
+
+function navigate(direction){
+  if(direction == -1) {  // left
+    $("#imageGallery div.active").prev().find(".image a").trigger("click");
+  } else if (direction == 1) {  //right
+    $("#imageGallery div.active").next().find(".image a").trigger("click");
+  }
+}

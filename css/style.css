@@ -91,7 +91,7 @@ img {
   cursor: pointer;
 	background: rgb(0, 61, 153);
   transition-property: opacity;
-  transition-duration: .75s;
+  transition-duration: .5s;
   transition-timing-function: ease-in-out;
 }
 
