@@ -33,23 +33,30 @@ $("div.image-wrapper").on("click", function(event){
   //Adds active class to active image
   $(this).addClass("active");
   //iframe display
-  if($imageType == "video"){
-    $iframe.attr("src", $imageLocation);
-    $iframe.show();
-    $image.hide();
 
-    //image display
-  } else if($imageType == "image"){
-    $image.attr("src", $imageLocation);
-    $image.show();
-    $iframe.hide();
+    if($(this).css("display") !== 'none') {
+      //Remove class active from previous active item
+      $("div.active").removeClass("active");
+      //Adds active class to active image
+      $(this).addClass("active");
 
-  }
+      if($imageType == "video"){
+        $iframe.attr("src", $imageLocation);
+        $iframe.show();
+        $image.hide();
 
-  //Caption display
-  var $captionLocation = $(this).find(".caption").text();
-  $caption.text($captionLocation);
+        //image display
+      } else if($imageType == "image"){
+        $image.attr("src", $imageLocation);
+        $image.show();
+        $iframe.hide();
 
+      }
+
+      //Caption display
+      var $captionLocation = $(this).find(".caption").text();
+      $caption.text($captionLocation);
+    }
   //Show the overlay
   $overlay.delay(200).fadeIn(400);
 
