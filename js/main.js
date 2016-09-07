@@ -1,6 +1,6 @@
 var $overlay = $('<div id="overlay"></div>');
 var $image = $("<img>");
-var $iframe = $('<iframe id="iframe" allowfullscreen frameborder="0"></iframe>')
+var $iframe = $('<iframe id="iframe" allowfullscreen frameborder="0"></iframe>');
 var $caption = $("<p></p>");
 var $btnPrev = $('<button id="btnPrev" type="button"> < </button>');
 var $btnNext = $('<button id="btnNext" type="button"> > </button>');
@@ -111,21 +111,21 @@ function navigate(direction){
 //Search box filter
 $("#searchbox").on("keyup", function() {
 
-  var $filter = $(this).val();
+  var $filter = $(this).val().toLowerCase();
   var count = 0;
+
 
   $("div .caption").each(function() {
     if($(this).text().search(new RegExp($filter, "i")) < 0) {
       var $pic = $(this).parents(".image-wrapper");
-      $pic.fadeOut();
+      $pic.fadeOut().removeClass("target");
+
 
     } else {
-      $(this).parents(".image-wrapper").fadeIn();
+      $(this).parents(".image-wrapper").fadeIn().addClass("target");
       count++;
+
     }
   });
-
-  var numberItems = count;
-  $("#filter-count").text("Number of Pictures = " + count);
 
 });
